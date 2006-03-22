@@ -1,13 +1,14 @@
 Summary:	.i files for initng
 Name:		initng-ifiles
 Version:	0.0.1
-Release:	0.3
+Release:	0.5
 License:	GPL v2
 Group:		Base
 Source0:	http://download.initng.thinktux.net/initng-ifiles/%{name}-%{version}.tar.bz2
 # Source0-md5:	9ec4f3b8c1a9a2af2e8254d28345c75f
 URL:		http://initng.thinktux.net/
 Requires:	initng
+Requires:	initng-tools = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_exec_prefix	/
@@ -17,6 +18,13 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Official initng .i files.
+
+%package -n initng-tools
+Summary:	tools used by initng .i files
+Group:		Base
+
+%description -n initng-tools
+shared tools used by initng-ifiles and initng-pld packages.
 
 # just temp placeholder for those scripts
 %package fixes
@@ -78,7 +86,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_sbindir}/initng-segfault
 %attr(755,root,root) %{_sbindir}/install_service
 %attr(755,root,root) %{_sbindir}/killalli5
-%attr(755,root,root) %{_sbindir}/ng-update
 %attr(755,root,root) %{_sbindir}/shutdown_script
 %attr(755,root,root) %{_sbindir}/system_off
 %attr(755,root,root) %{_prefix}%{_sbindir}/ngcupdown
@@ -110,9 +117,13 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/scripts/net/udhcpc-wrapper
 %attr(755,root,root) %{_libdir}/scripts/net/wpa_supplicant
 %attr(755,root,root) %{_libdir}/scripts/net/wpa_cli.action
-%{_mandir}/man8/ng-update.8*
 %{_mandir}/man8/install_service.8*
 %{_mandir}/man8/gen_system_runlevel.8*
+
+%files -n initng-tools
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_sbindir}/ng-update
+%{_mandir}/man8/ng-update.8*
 
 %files fixes
 %defattr(644,root,root,755)
