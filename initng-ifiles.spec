@@ -1,7 +1,7 @@
 Summary:	.i files for initng
 Name:		initng-ifiles
 Version:	0.0.1
-Release:	0.1
+Release:	0.2
 License:	GPL v2
 Group:		Base
 Source0:	http://download.initng.thinktux.net/initng-ifiles/%{name}-%{version}.tar.bz2
@@ -37,6 +37,7 @@ instalowaæ ten pakiet z opcj± rpm-a --replacefiles.
 %package -n vim-syntax-initng
 Summary:	Vim syntax: initng
 Summary(pl):	Sk³adnia dla Vima: initng
+Epoch:		1
 Group:		Applications/Editors/Vim
 # for _vimdatadir existence
 Requires:	vim >= 4:6.3.058-3
