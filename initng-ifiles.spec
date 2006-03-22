@@ -20,11 +20,11 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Official initng .i files.
 
 %package -n initng-tools
-Summary:	tools used by initng .i files
+Summary:	Tools used by initng .i files
 Group:		Base
 
 %description -n initng-tools
-shared tools used by initng-ifiles and initng-pld packages.
+Shared tools used by initng-ifiles and initng-pld packages.
 
 # just temp placeholder for those scripts
 %package fixes
