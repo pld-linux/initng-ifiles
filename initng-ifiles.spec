@@ -1,12 +1,13 @@
 Summary:	.i files for initng
 Name:		initng-ifiles
 Version:	0.0.1
-Release:	0.2
+Release:	0.3
 License:	GPL v2
 Group:		Base
 Source0:	http://download.initng.thinktux.net/initng-ifiles/%{name}-%{version}.tar.bz2
 # Source0-md5:	9ec4f3b8c1a9a2af2e8254d28345c75f
 URL:		http://initng.thinktux.net/
+Requires:	initng
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_exec_prefix	/
@@ -22,7 +23,7 @@ Official initng .i files.
 Summary:	initng experimental patches and fixes
 Summary(pl):	Eksperymentalne ³aty i poprawki do initng
 Group:		Base
-Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	%{name} = %{version}-%{release}
 
 %description fixes
 Contains fixes directory from initng distribution, which appear to
