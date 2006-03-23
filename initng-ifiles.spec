@@ -1,4 +1,5 @@
 Summary:	.i files for initng
+Summary(pl):	Pliki .i dla initng
 Name:		initng-ifiles
 Version:	0.0.1
 Release:	0.5
@@ -21,10 +22,15 @@ Official initng .i files.
 
 %package -n initng-tools
 Summary:	Tools used by initng .i files
+Summary(pl):	Narzêdzia u¿ywane przez pliki .i z initng
 Group:		Base
 
 %description -n initng-tools
 Shared tools used by initng-ifiles and initng-pld packages.
+
+%description -n initng-tools -l pl
+Wspó³dzielone narzêdzia u¿ywane przez pakiety initng-ifiles i
+initng-pld.
 
 # just temp placeholder for those scripts
 %package fixes
@@ -53,6 +59,9 @@ Requires:	vim >= 4:6.3.058-3
 
 %description -n vim-syntax-initng
 This plugin provides syntax highlighting for initng files.
+
+%description -n vim-syntax-initng -l pl
+Ta wtycza dostarcza pod¶wietlanie sk³adni dla plików initng.
 
 %prep
 %setup -q
