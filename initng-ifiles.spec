@@ -72,7 +72,8 @@ Ta wtycza dostarcza pod¶wietlanie sk³adni dla plików initng.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure
+%configure \
+	--sysconfdir=/etc
 %{__make}
 
 %install
