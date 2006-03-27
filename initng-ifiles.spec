@@ -1,12 +1,12 @@
 Summary:	.i files for initng
 Summary(pl):	Pliki .i dla initng
 Name:		initng-ifiles
-Version:	0.0.1
-Release:	0.5
+Version:	0.0.2
+Release:	0.1
 License:	GPL v2
 Group:		Base
-Source0:	http://download.initng.thinktux.net/initng-ifiles/%{name}-%{version}.tar.bz2
-# Source0-md5:	9ec4f3b8c1a9a2af2e8254d28345c75f
+Source0:	http://download.initng.thinktux.net/initng-ifiles/v0.0/%{name}-%{version}.tar.bz2
+# Source0-md5:	2502e7e9450dcb9215a4a620e887120d
 URL:		http://initng.thinktux.net/
 Requires:	initng
 Requires:	initng-tools = %{version}-%{release}
@@ -94,11 +94,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc README AUTHORS ChangeLog NEWS TEMPLATE_HEADER TODO CODING_STANDARDS
 %doc doc/{iimanual,imanual}.txt
 %attr(755,root,root) %{_sbindir}/gen_system_runlevel
-%attr(755,root,root) %{_sbindir}/initng-segfault
 %attr(755,root,root) %{_sbindir}/install_service
-%attr(755,root,root) %{_sbindir}/killalli5
-%attr(755,root,root) %{_sbindir}/shutdown_script
-%attr(755,root,root) %{_sbindir}/system_off
 %attr(755,root,root) %{_prefix}%{_sbindir}/ngcupdown
 %dir %{_sysconfdir}/daemon
 %dir %{_sysconfdir}/daemon/bluetooth
