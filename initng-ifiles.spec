@@ -1,13 +1,13 @@
 Summary:	.i files for initng
 Summary(pl):	Pliki .i dla initng
 Name:		initng-ifiles
-Version:	0.0.2
+Version:	0.0.3.1
 Release:	0.1
 License:	GPL v2
 Group:		Base
-Source0:	http://download.initng.thinktux.net/initng-ifiles/v0.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	2502e7e9450dcb9215a4a620e887120d
-URL:		http://initng.thinktux.net/
+Source0:	http://download.initng.org/initng-ifiles/v0.0/%{name}-%{version}.tar.bz2
+# Source0-md5:	d5338ed5723ecd599ef66940adc22f44
+URL:		http://www.initng.org/
 Requires:	initng
 Requires:	initng-tools = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -98,12 +98,14 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_prefix}%{_sbindir}/ngcupdown
 %dir %{_sysconfdir}/daemon
 %dir %{_sysconfdir}/daemon/bluetooth
+%dir %{_sysconfdir}/daemon/lirc
 %dir %{_sysconfdir}/debug
 %dir %{_sysconfdir}/net
 %dir %{_sysconfdir}/system
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/*.i
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/daemon/*.i
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/daemon/bluetooth/*.i
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/daemon/lirc/*.i
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/debug/*.i
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/system/*.i
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/net/*.i
