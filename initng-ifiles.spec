@@ -2,12 +2,13 @@ Summary:	.i files for initng
 Summary(pl):	Pliki .i dla initng
 Name:		initng-ifiles
 Version:	0.0.3.1
-Release:	0.1
+Release:	0.2
 License:	GPL v2
 Group:		Base
 Source0:	http://download.initng.org/initng-ifiles/v0.0/%{name}-%{version}.tar.bz2
 # Source0-md5:	d5338ed5723ecd599ef66940adc22f44
 URL:		http://www.initng.org/
+BuildRequires:	libtool
 Requires:	initng
 Requires:	initng-tools = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
