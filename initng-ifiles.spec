@@ -8,6 +8,8 @@ Group:		Base
 Source0:	http://download.initng.org/initng-ifiles/v0.0/%{name}-%{version}.tar.bz2
 # Source0-md5:	d5338ed5723ecd599ef66940adc22f44
 URL:		http://www.initng.org/
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	libtool
 Requires:	initng
 Requires:	initng-tools = %{version}-%{release}
