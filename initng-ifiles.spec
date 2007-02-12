@@ -1,5 +1,5 @@
 Summary:	.i files for initng
-Summary(pl):	Pliki .i dla initng
+Summary(pl.UTF-8):   Pliki .i dla initng
 Name:		initng-ifiles
 Version:	0.0.3.1
 Release:	0.2
@@ -25,20 +25,20 @@ Official initng .i files.
 
 %package -n initng-tools
 Summary:	Tools used by initng .i files
-Summary(pl):	NarzÍdzia uøywane przez pliki .i z initng
+Summary(pl.UTF-8):   Narzƒôdzia u≈ºywane przez pliki .i z initng
 Group:		Base
 
 %description -n initng-tools
 Shared tools used by initng-ifiles and initng-pld packages.
 
-%description -n initng-tools -l pl
-WspÛ≥dzielone narzÍdzia uøywane przez pakiety initng-ifiles i
+%description -n initng-tools -l pl.UTF-8
+Wsp√≥≈Çdzielone narzƒôdzia u≈ºywane przez pakiety initng-ifiles i
 initng-pld.
 
 # just temp placeholder for those scripts
 %package fixes
 Summary:	initng experimental patches and fixes
-Summary(pl):	Eksperymentalne ≥aty i poprawki do initng
+Summary(pl.UTF-8):   Eksperymentalne ≈Çaty i poprawki do initng
 Group:		Base
 Requires:	%{name} = %{version}-%{release}
 
@@ -47,14 +47,14 @@ Contains fixes directory from initng distribution, which appear to
 replace few system files. You should probably install this package
 with --replacefiles rpm option.
 
-%description fixes -l pl
-Ten pakiet zawiera katalog fixes z dystrybucji initng, ktÛry wydaje
-siÍ zastÍpowaÊ niektÛre pliki systemowe. Prawdopodobnie naleøy
-instalowaÊ ten pakiet z opcj± rpm-a --replacefiles.
+%description fixes -l pl.UTF-8
+Ten pakiet zawiera katalog fixes z dystrybucji initng, kt√≥ry wydaje
+siƒô zastƒôpowaƒá niekt√≥re pliki systemowe. Prawdopodobnie nale≈ºy
+instalowaƒá ten pakiet z opcjƒÖ rpm-a --replacefiles.
 
 %package -n vim-syntax-initng
 Summary:	Vim syntax: initng
-Summary(pl):	Sk≥adnia dla Vima: initng
+Summary(pl.UTF-8):   Sk≈Çadnia dla Vima: initng
 Epoch:		1
 Group:		Applications/Editors/Vim
 # for _vimdatadir existence
@@ -63,8 +63,8 @@ Requires:	vim >= 4:6.3.058-3
 %description -n vim-syntax-initng
 This plugin provides syntax highlighting for initng files.
 
-%description -n vim-syntax-initng -l pl
-Ta wtycza dostarcza pod∂wietlanie sk≥adni dla plikÛw initng.
+%description -n vim-syntax-initng -l pl.UTF-8
+Ta wtycza dostarcza pod≈õwietlanie sk≈Çadni dla plik√≥w initng.
 
 %prep
 %setup -q
