@@ -1,5 +1,5 @@
 Summary:	.i files for initng
-Summary(pl.UTF-8):   Pliki .i dla initng
+Summary(pl.UTF-8):	Pliki .i dla initng
 Name:		initng-ifiles
 Version:	0.0.3.1
 Release:	0.2
@@ -25,7 +25,7 @@ Official initng .i files.
 
 %package -n initng-tools
 Summary:	Tools used by initng .i files
-Summary(pl.UTF-8):   Narzędzia używane przez pliki .i z initng
+Summary(pl.UTF-8):	Narzędzia używane przez pliki .i z initng
 Group:		Base
 
 %description -n initng-tools
@@ -38,7 +38,7 @@ initng-pld.
 # just temp placeholder for those scripts
 %package fixes
 Summary:	initng experimental patches and fixes
-Summary(pl.UTF-8):   Eksperymentalne łaty i poprawki do initng
+Summary(pl.UTF-8):	Eksperymentalne łaty i poprawki do initng
 Group:		Base
 Requires:	%{name} = %{version}-%{release}
 
@@ -54,7 +54,7 @@ instalować ten pakiet z opcją rpm-a --replacefiles.
 
 %package -n vim-syntax-initng
 Summary:	Vim syntax: initng
-Summary(pl.UTF-8):   Składnia dla Vima: initng
+Summary(pl.UTF-8):	Składnia dla Vima: initng
 Epoch:		1
 Group:		Applications/Editors/Vim
 # for _vimdatadir existence
