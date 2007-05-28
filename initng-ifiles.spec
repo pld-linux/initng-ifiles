@@ -1,18 +1,18 @@
 Summary:	.i files for initng
 Summary(pl.UTF-8):	Pliki .i dla initng
 Name:		initng-ifiles
-Version:	0.0.3.1
-Release:	0.2
+Version:	0.1.3
+Release:	0.1
 License:	GPL v2
 Group:		Base
-Source0:	http://download.initng.org/initng-ifiles/v0.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	d5338ed5723ecd599ef66940adc22f44
+Source0:	http://download.initng.org/initng-ifiles/v0.1/%{name}-%{version}.tar.bz2
+# Source0-md5:	3fd97a526897f19befeb7c0b663cfc6d
 URL:		http://www.initng.org/
-BuildRequires:	autoconf
-BuildRequires:	automake
-BuildRequires:	libtool
+BuildRequires:	cmake
+BuildRequires:	initng-devel
 Requires:	initng
 Requires:	initng-tools = %{version}-%{release}
+Obsoletes:	initng-ifiles-fixes
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_exec_prefix	/
@@ -35,23 +35,6 @@ Shared tools used by initng-ifiles and initng-pld packages.
 Współdzielone narzędzia używane przez pakiety initng-ifiles i
 initng-pld.
 
-# just temp placeholder for those scripts
-%package fixes
-Summary:	initng experimental patches and fixes
-Summary(pl.UTF-8):	Eksperymentalne łaty i poprawki do initng
-Group:		Base
-Requires:	%{name} = %{version}-%{release}
-
-%description fixes
-Contains fixes directory from initng distribution, which appear to
-replace few system files. You should probably install this package
-with --replacefiles rpm option.
-
-%description fixes -l pl.UTF-8
-Ten pakiet zawiera katalog fixes z dystrybucji initng, który wydaje
-się zastępować niektóre pliki systemowe. Prawdopodobnie należy
-instalować ten pakiet z opcją rpm-a --replacefiles.
-
 %package -n vim-syntax-initng
 Summary:	Vim syntax: initng
 Summary(pl.UTF-8):	Składnia dla Vima: initng
@@ -70,14 +53,8 @@ Ta wtycza dostarcza podświetlanie składni dla plików initng.
 %setup -q
 
 %build
-%{__libtoolize}
-%{__aclocal} -I m4
-%{__autoconf}
-%{__autoheader}
-%{__automake}
-%configure \
-	--sysconfdir=/etc \
-	--libdir=/%{_lib}
+%cmake . \
+	-DLIB_INSTALL_DIR=/%{_lib}
 %{__make}
 
 %install
@@ -88,31 +65,41 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}
 	DESTDIR=$RPM_BUILD_ROOT
 
 rm -r $RPM_BUILD_ROOT%{_docdir}/%{name}
+mv -f $RPM_BUILD_ROOT/%{_lib}/libgenrunlevel{.generic,}
+rm -f $RPM_BUILD_ROOT/%{_lib}/libgenrunlevel.*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README AUTHORS ChangeLog NEWS TEMPLATE_HEADER TODO CODING_STANDARDS
+%doc README AUTHORS ChangeLog TODO
 %doc doc/{iimanual,imanual}.txt
-%attr(755,root,root) %{_sbindir}/gen_system_runlevel
+%attr(755,root,root) %{_sbindir}/genrunlevel
 %attr(755,root,root) %{_sbindir}/install_service
-%attr(755,root,root) %{_prefix}%{_sbindir}/ngcupdown
+%attr(755,root,root) /%{_lib}/libgenrunlevel
 %dir %{_sysconfdir}/daemon
 %dir %{_sysconfdir}/daemon/bluetooth
+%dir %{_sysconfdir}/daemon/exim
 %dir %{_sysconfdir}/daemon/lirc
-%dir %{_sysconfdir}/debug
+%dir %{_sysconfdir}/daemon/nut
+%dir %{_sysconfdir}/daemon/vmware
 %dir %{_sysconfdir}/net
+%dir %{_sysconfdir}/runlevel
+%dir %{_sysconfdir}/service
 %dir %{_sysconfdir}/system
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/*.i
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/daemon/*.i
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/daemon/bluetooth/*.i
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/daemon/exim/*.i
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/daemon/lirc/*.i
-%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/debug/*.i
-%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/system/*.i
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/daemon/nut/*.i
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/daemon/vmware/*.i
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/net/*.i
-%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/*.runlevel
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/runlevel/*.runlevel
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/service/*.i
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/system/*.i
+
 %dir %{_libdir}/scripts
 %dir %{_libdir}/scripts/net
 %attr(755,root,root) %{_libdir}/scripts/net/dhclient-wrapper
@@ -129,21 +116,13 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/scripts/net/udhcpc-wrapper
 %attr(755,root,root) %{_libdir}/scripts/net/wpa_supplicant
 %attr(755,root,root) %{_libdir}/scripts/net/wpa_cli.action
+%{_mandir}/man8/genrunlevel.8*
 %{_mandir}/man8/install_service.8*
-%{_mandir}/man8/gen_system_runlevel.8*
 
 %files -n initng-tools
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_sbindir}/ng-update
 %{_mandir}/man8/ng-update.8*
-
-%files fixes
-%defattr(644,root,root,755)
-%config(noreplace) %verify(not md5 mtime size) /etc/pcmcia/network
-%config(noreplace) %verify(not md5 mtime size) /etc/hotplug/net.agent
-%attr(755,root,root) %{_prefix}%{_sbindir}/ifplugd.action
-%attr(755,root,root) %{_prefix}%{_sbindir}/wpa_cli.action
-/etc/ifplugd/action.d/ngcupdown
 
 %files -n vim-syntax-initng
 %defattr(644,root,root,755)
