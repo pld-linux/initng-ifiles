@@ -1,12 +1,12 @@
 Summary:	.i files for initng
 Summary(pl.UTF-8):	Pliki .i dla initng
 Name:		initng-ifiles
-Version:	0.1.3
+Version:	0.1.4
 Release:	0.1
 License:	GPL v2
 Group:		Base
 Source0:	http://download.initng.org/initng-ifiles/v0.1/%{name}-%{version}.tar.bz2
-# Source0-md5:	3fd97a526897f19befeb7c0b663cfc6d
+# Source0-md5:	945cd5b29e4154a28e5a5f192ad1522c
 URL:		http://www.initng.org/
 BuildRequires:	cmake
 BuildRequires:	initng-devel
