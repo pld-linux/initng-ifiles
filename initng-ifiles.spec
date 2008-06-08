@@ -1,12 +1,12 @@
 Summary:	.i files for initng
 Summary(pl.UTF-8):	Pliki .i dla initng
 Name:		initng-ifiles
-Version:	0.1.4
+Version:	0.1.5
 Release:	0.1
 License:	GPL v2
 Group:		Base
 Source0:	http://download.initng.org/initng-ifiles/v0.1/%{name}-%{version}.tar.bz2
-# Source0-md5:	945cd5b29e4154a28e5a5f192ad1522c
+# Source0-md5:	23a06cf1c8c25e049a8c962acfda9ea7
 URL:		http://www.initng.org/
 BuildRequires:	cmake
 BuildRequires:	initng-devel
@@ -41,7 +41,7 @@ Summary(pl.UTF-8):	Składnia dla Vima: initng
 Epoch:		1
 Group:		Applications/Editors/Vim
 # for _vimdatadir existence
-Requires:	vim >= 4:6.3.058-3
+Requires:	vim-rt >= 4:6.3.058-3
 
 %description -n vim-syntax-initng
 This plugin provides syntax highlighting for initng files.
